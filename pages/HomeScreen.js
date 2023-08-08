@@ -43,7 +43,7 @@ const persons = [
   },
   {
     id: "6",
-
+    url: 'https://thumbs.dreamstime.com/b/demo-test-ideas-trailer-trial-concept-76003902.jpg',
     name: "Carlton Zieme",
   },
   {

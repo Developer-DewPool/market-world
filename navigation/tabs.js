@@ -15,8 +15,8 @@ const HomeStack = createNativeStackNavigator();
 function HomeStackScreen() {
     return (
         <HomeStack.Navigator>
-            <HomeStack.Screen name="HOME" component={HomeScreen} />
-            <HomeStack.Screen name="Details" component={DetailsScreen} />
+            <HomeStack.Screen options={{ headerTitleAlign: 'center' }} name="HOME" component={HomeScreen} />
+            <HomeStack.Screen options={{ headerTitleAlign: 'center' }} name="Details" component={DetailsScreen} />
         </HomeStack.Navigator>
     );
 }
@@ -25,8 +25,8 @@ const SettingsStack = createNativeStackNavigator();
 function SettingsStackScreen() {
     return (
         <SettingsStack.Navigator>
-            <SettingsStack.Screen name="Settings" component={SettingsScreen} />
-            <SettingsStack.Screen name="Profile" component={ProfileScreen} />
+            <SettingsStack.Screen options={{ headerTitleAlign: 'center' }} name="Settings" component={SettingsScreen} />
+            <SettingsStack.Screen options={{ headerTitleAlign: 'center' }} name="Profile" component={ProfileScreen} />
         </SettingsStack.Navigator>
     );
 }
@@ -35,7 +35,7 @@ const AboutStack = createNativeStackNavigator();
 function AboutStackScreen() {
     return (
         <AboutStack.Navigator>
-            <AboutStack.Screen name="ABOUT US" component={AboutScreen} />
+            <AboutStack.Screen options={{ headerTitleAlign: 'center' }} name="ABOUT US" component={AboutScreen} />
         </AboutStack.Navigator>
     );
 }
@@ -44,11 +44,10 @@ const ContactStack = createNativeStackNavigator();
 function ContactStackScreen() {
     return (
         <ContactStack.Navigator>
-            <ContactStack.Screen name="CONTACT US" component={ContactScreen} />
+            <ContactStack.Screen options={{ headerTitleAlign: 'center' }} name="CONTACT US" component={ContactScreen} />
         </ContactStack.Navigator>
     );
 }
-
 
 const Tabs = () => {
 

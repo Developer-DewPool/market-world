@@ -6,7 +6,7 @@ import { View, Text, SafeAreaView } from 'react-native';
 const DetailsScreen = () => {
   return (
     <SafeAreaView style={{ backgroundColor: '#a1285e', flex: 1 }}>
-      <View style={{ flex: 1 , padding: 16}}>
+      <View style={{ flex: 1, padding: 16 }}>
         <View
           style={{
             flex: 1,
