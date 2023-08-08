@@ -1,6 +1,4 @@
-// React Native Bottom Navigation
-// https://aboutreact.com/react-native-bottom-navigation/
-import React, {useState, useRef} from 'react';
+import React, { useState, useRef } from 'react';
 import {
   TouchableOpacity,
   StyleSheet,
@@ -8,12 +6,67 @@ import {
   Text,
   SafeAreaView,
   Dimensions,
+  ScrollView,
   Image
 } from 'react-native';
-import Carousel, {Pagination} from 'react-native-snap-carousel';
-
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+import { Card, Button, Title, Paragraph } from 'react-native-paper';
 export const SLIDER_WIDTH = Dimensions.get('window').width + 30;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
+
+
+const persons = [
+  {
+    id: "1",
+    url: 'https://thumbs.dreamstime.com/b/demo-test-ideas-trailer-trial-concept-76003902.jpg',
+    name: "Earnest Green",
+  },
+  {
+    id: "2",
+    url: 'https://media.geeksforgeeks.org/wp-content/uploads/20220217151648/download3-200x200.png',
+    name: "Winston Orn",
+  },
+  {
+    id: "3",
+    url: 'https://icon-library.com/images/react-icon/react-icon-29.jpg',
+    name: "Carlton Collins",
+  },
+  {
+    id: "4",
+    url: 'https://upload.wikimedia.org/wikipedia/commons/3/3b/Javascript_Logo.png',
+    name: "Malcolm Labadie",
+  },
+  {
+    id: "5",
+    url: 'https://upload.wikimedia.org/wikipedia/commons/6/67/NodeJS.png',
+    name: "Michelle Dare",
+  },
+  {
+    id: "6",
+
+    name: "Carlton Zieme",
+  },
+  {
+    id: "7",
+    url: 'https://upload.wikimedia.org/wikipedia/commons/3/3b/Javascript_Logo.png',
+    name: "Jessie Dickinson",
+  },
+  {
+    id: "8",
+    url: 'https://thumbs.dreamstime.com/b/demo-test-ideas-trailer-trial-concept-76003902.jpg',
+    name: "Julian Gulgowski",
+  },
+  {
+    id: "9",
+    url: 'https://upload.wikimedia.org/wikipedia/commons/6/67/NodeJS.png',
+    name: "Ellen Veum",
+  },
+  {
+    id: "10",
+    url: 'https://icon-library.com/images/react-icon/react-icon-29.jpg',
+    name: "Lorena Rice",
+  }
+];
 
 const data = [
   {
@@ -33,7 +86,7 @@ const data = [
   },
 ];
 
-const renderItem = ({item}) => {
+const renderItem = ({ item }) => {
   return (
     <View
       style={{
@@ -43,8 +96,8 @@ const renderItem = ({item}) => {
         alignItems: 'center',
         backgroundColor: 'white',
       }}>
-      <Image source={{uri: item.url}} resizeMode="contain" style={{width: 100, height: 100 }} />
-      <Text style={{marginVertical: 5, fontSize: 20, fontWeight: 'bold', color: 'black'}}>
+      <Image source={{ uri: item.url }} resizeMode="contain" style={{ width: 100, height: 100 }} />
+      <Text style={{ marginVertical: 5, fontSize: 20, fontWeight: 'bold', color: 'black' }}>
         {item.name}
       </Text>
     </View>
@@ -56,7 +109,7 @@ const HomeScreen = ({ navigation }) => {
   const isCarousel = useRef(null);
   return (
     <SafeAreaView style={{ backgroundColor: '#a1285e', flex: 1 }}>
-      <View style={{ flex: 1, padding: 16 }}>
+      <View style={{ flex: 1, padding: 2 }}>
         <View style={{ marginVertical: 10 }}>
           <Carousel
             ref={isCarousel}
@@ -71,8 +124,9 @@ const HomeScreen = ({ navigation }) => {
             activeDotIndex={index}
             carouselRef={isCarousel}
             dotStyle={{
-              width: 10,
-              height: 10,
+              bottom: 15,
+              width: 8,
+              height: 8,
               borderRadius: 5,
               marginHorizontal: 8,
               backgroundColor: '#F4BB41',
@@ -88,53 +142,46 @@ const HomeScreen = ({ navigation }) => {
         </View>
         <View
           style={{
-            flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
-            bottom: 160
+            bottom: 20
           }}>
           <Text
             style={{
               fontSize: 25,
+              fontWeight: '800',
               textAlign: 'center',
-              marginBottom: 10
             }}>
-            You are on Home Screen
+            Dashboard List
           </Text>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={
-              () => navigation.navigate(
-                'SettingsStack', { screen: 'Settings' }
-              )}>
-            <Text>Go to settng Tab</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={
-              () => navigation.navigate('Details')
-            }>
-            <Text>Open Details Screen</Text>
-          </TouchableOpacity>
-          <Text
-          style={{
-            top: 20,
-            fontSize: 18,
-            textAlign: 'center',
-            color: 'grey'
-          }}>
-          React Native Home
-        </Text>
-        <Text
-          style={{
-            fontSize: 16,
-            textAlign: 'center',
-            color: 'grey'
-          }}>
-          www.demo.com
-        </Text>
         </View>
-        
+        <View style={styles.container}>
+          <ScrollView>
+            <View>
+              {persons.map((person) => {
+                return (
+                  <Card style={styles.container}>
+                    <Card.Content>
+                      <Title><Text style={styles.item}>{person.name}</Text></Title>
+                    </Card.Content>
+                    <Card.Cover resizeMode="contain" source={{ uri: person.url }} />
+                    <Card.Content>
+                      <Paragraph>A Computer Science portal for Geeks</Paragraph>
+                    </Card.Content>
+                    <Card.Actions>
+                      <Button 
+                      onPress={
+                        () => navigation.navigate('Details')
+                      }
+                      >Add To Favourites</Button>
+                    </Card.Actions>
+                  </Card>
+                );
+              })}
+            </View>
+          </ScrollView>
+        </View>
+
       </View>
     </SafeAreaView>
   );
@@ -148,5 +195,17 @@ const styles = StyleSheet.create({
     width: 300,
     marginTop: 16,
   },
+  container: {
+    alignContent: 'center',
+    top: 0,
+    margin: 5,
+    padding: 2,
+    flex: 1,
+  },
+  item: {
+    padding: 5,
+    fontSize: 25,
+    marginTop: 0,
+  }
 });
 export default HomeScreen;
