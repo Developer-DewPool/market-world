@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
-  TouchableOpacity,
   StyleSheet,
   View,
   Text,
+  TextInput,
   SafeAreaView,
   Dimensions,
   ScrollView,
@@ -104,9 +104,17 @@ const renderItem = ({ item }) => {
   );
 };
 
+
 const HomeScreen = ({ navigation }) => {
+  const [search, setSearch] = useState('');
   const [index, setIndex] = useState(0);
   const isCarousel = useRef(null);
+
+  const [value, setValue] = useState()
+    function updateSearch(value) {
+        console.log(value)
+    }
+
   return (
     <SafeAreaView style={{ backgroundColor: '#a1285e', flex: 1 }}>
       <View style={{ flex: 1, padding: 2 }}>
@@ -146,16 +154,23 @@ const HomeScreen = ({ navigation }) => {
             justifyContent: 'center',
             bottom: 20
           }}>
-          <Text
+          {/* <Text
             style={{
               fontSize: 25,
               fontWeight: '800',
               textAlign: 'center',
             }}>
             Dashboard List
-          </Text>
+          </Text> */}
+          <TextInput
+            style={styles.textInputStyle}
+            value={value}
+            updateSearch={updateSearch}
+            underlineColorAndroid="transparent"
+            placeholder="Search Here"
+          />
         </View>
-        <View style={styles.container}>
+        <View style={{ bottom: 30 }}>
           <ScrollView>
             <View>
               {persons.map((person) => {
@@ -169,10 +184,10 @@ const HomeScreen = ({ navigation }) => {
                       <Paragraph>A Computer Science portal for Geeks</Paragraph>
                     </Card.Content>
                     <Card.Actions>
-                      <Button 
-                      onPress={
-                        () => navigation.navigate('Details')
-                      }
+                      <Button
+                        onPress={
+                          () => navigation.navigate('Details')
+                        }
                       >Add To Favourites</Button>
                     </Card.Actions>
                   </Card>
@@ -206,6 +221,19 @@ const styles = StyleSheet.create({
     padding: 5,
     fontSize: 25,
     marginTop: 0,
-  }
+  },
+  textInputStyle: {
+    height: 50,
+    borderWidth: 1,
+    bottom: 20,
+    paddingLeft: 20,
+    margin: 0,
+    width: 350,
+    borderRadius: 20,
+    borderColor: '#009688',
+    fontSize: 20,
+    color: 'black',
+    backgroundColor: '#FFFFFF',
+  },
 });
 export default HomeScreen;

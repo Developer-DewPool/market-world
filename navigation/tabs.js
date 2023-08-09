@@ -15,8 +15,8 @@ const HomeStack = createNativeStackNavigator();
 function HomeStackScreen() {
     return (
         <HomeStack.Navigator>
-            <HomeStack.Screen options={{ headerTitleAlign: 'center' }} name="HOME" component={HomeScreen} />
-            <HomeStack.Screen options={{ headerTitleAlign: 'center' }} name="Details" component={DetailsScreen} />
+            <HomeStack.Screen options={{ headerTitleAlign: 'center', title: 'HOME', }} name="Home" component={HomeScreen} />
+            <HomeStack.Screen options={{ headerTitleAlign: 'center', title: 'DETAILS', }} name="Details" component={DetailsScreen} />
         </HomeStack.Navigator>
     );
 }
@@ -25,8 +25,8 @@ const SettingsStack = createNativeStackNavigator();
 function SettingsStackScreen() {
     return (
         <SettingsStack.Navigator>
-            <SettingsStack.Screen options={{ headerTitleAlign: 'center' }} name="Settings" component={SettingsScreen} />
-            <SettingsStack.Screen options={{ headerTitleAlign: 'center' }} name="Profile" component={ProfileScreen} />
+            <SettingsStack.Screen options={{ headerTitleAlign: 'center', title: 'SETTINGS', }} name="Settings" component={SettingsScreen} />
+            <SettingsStack.Screen options={{ headerTitleAlign: 'center', title: 'PROFILE', }} name="Profile" component={ProfileScreen} />
         </SettingsStack.Navigator>
     );
 }
@@ -35,7 +35,7 @@ const AboutStack = createNativeStackNavigator();
 function AboutStackScreen() {
     return (
         <AboutStack.Navigator>
-            <AboutStack.Screen options={{ headerTitleAlign: 'center' }} name="ABOUT US" component={AboutScreen} />
+            <AboutStack.Screen options={{ headerTitleAlign: 'center', title: 'ABOUT US', }} name="About" component={AboutScreen} />
         </AboutStack.Navigator>
     );
 }
@@ -44,7 +44,7 @@ const ContactStack = createNativeStackNavigator();
 function ContactStackScreen() {
     return (
         <ContactStack.Navigator>
-            <ContactStack.Screen options={{ headerTitleAlign: 'center' }} name="CONTACT US" component={ContactScreen} />
+            <ContactStack.Screen options={{ headerTitleAlign: 'center', title: 'CONTACT US', }} name="Contact" component={ContactScreen} />
         </ContactStack.Navigator>
     );
 }
@@ -70,7 +70,7 @@ const Tabs = () => {
             }}
         >
             <Tab.Screen
-                name="HOME"
+                name="Overview"
                 component={HomeStackScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
@@ -93,7 +93,7 @@ const Tabs = () => {
                 }}
             />
             <Tab.Screen
-                name="CONTACT US"
+                name="Contact"
                 component={ContactStackScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
@@ -116,7 +116,7 @@ const Tabs = () => {
                 }}
             />
             <Tab.Screen
-                name="ABOUT US"
+                name="About"
                 component={AboutStackScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
@@ -139,7 +139,7 @@ const Tabs = () => {
                 }}
             />
             <Tab.Screen
-                name="Settings"
+                name="Setting"
                 component={SettingsStackScreen} options={{
                     tabBarIcon: ({ focused }) => (
                         <View style={{ alignItems: 'center', justifyContent: 'center', top: 5 }}>
